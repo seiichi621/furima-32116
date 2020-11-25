@@ -12,11 +12,10 @@
 | first_name_kana               | string   | null: false |
 | last_name_kana                | string   | null: false |
 | gender                        | string   | null: false |
-| date 　　　　　　               | string   | null: false |
+| birthday 　　　　　　           | date     | null: false |
 
 ### Association
--has_many :item_users
--has_many :items, through: item_users
+-has_many :items
 -has_many :orders
 
 ## items テーブル
@@ -34,8 +33,7 @@
 | user               | reference  | null:false, foreign_key: true |
 
 ### Association
--has_many :order_items
--has_many :orders, through :order_items
+-belongs_to :order
 -belongs_to :user
   
 
