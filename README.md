@@ -9,7 +9,8 @@
 | nickname      　　　　　　      | string   | null: false |
 | first_name          　　　　　　| string   | null: false |
 | last_name　　　　　　　　　　　　 | string   | null: false |
-| birthday 　　　　　　           | string   | null: false |
+| gender                        | string   | null: false |
+| date 　　　　　　               | string   | null: false |
 
 ## items テーブル
 
@@ -40,8 +41,8 @@
 | postcode           | string     | null: false |
 | prefectures_id     | integer    | null: false |
 | state              | string     | null: false |
-| street number      | integer    | null: false |
-| building name      | string     |             |
-| phone number       | stirng     | null:false  |
+| street_number      | string     | null: false |
+| building_name      | string     |             |
+| phone_number       | stirng     | null:false  |
 | order              | reference  | null:false, foreign_key: true |
 
