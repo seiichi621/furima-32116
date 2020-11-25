@@ -33,7 +33,7 @@
 | user               | reference  | null:false, foreign_key: true |
 
 ### Association
--belongs_to :order
+-has_one :order
 -belongs_to :user
   
 
