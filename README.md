@@ -11,7 +11,7 @@
 | last_name　　　　　　　　　　　　 | string   | null: false |
 | first_name_kana               | string   | null: false |
 | last_name_kana                | string   | null: false |
-| gender                        | string   | null: false |
+| gender                        | string   | 　　　　　　  |
 | birthday 　　　　　　           | date     | null: false |
 
 ### Association
@@ -47,7 +47,7 @@
 ### Association
 -belongs_to :user
 -belongs_to :item
--has_many :address
+-has_one :address
 
 
 ## address テーブル
