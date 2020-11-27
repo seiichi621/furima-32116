@@ -15,13 +15,13 @@ describe User do
     end
  
     
-    it "emailがない場合は登録できないこと" do
+    it "emailに＠がないと登録できないこと" do
       @user.email = "test.com"
       @user.valid?
       expect(@user.errors.full_messages).to include("Email is invalid")
     end
 
-    it "emailに＠がないと登録できないこと" do
+    it "emailが空の場合登録できないこと" do
       @user.email = ""
       @user.valid?
       expect(@user.errors.full_messages).to include("Email can't be blank")
