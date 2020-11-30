@@ -23,14 +23,14 @@
 | Column             | Type       | Options     |
 | ------             | ------     | ----------- |
 | name               | string     | null:false  |
-| explain            | text       | null:false  |
-| category_id        | integer    | null:false  |
-| condition_id       | integer    | null:false  |
-| delivery_fee_id    | integer    | null:false  |
-| prefecture_id      | integer    | null:false  |
-| datetime_id        | integer    | null:false  |
+| describe           | text       | null:false  |
+| category           | integer    | null:false  |
+| condition          | integer    | null:false  |
+| delivery_fee       | integer    | null:false  |
+| prefecture         | integer    | null:false  |
+| datetime           | integer    | null:false  |
 | price              | integer    | null:false  |
-| user               | reference  | null:false, foreign_key: true |
+| user               | references  | null:false, foreign_key: true |
 
 ### Association
 -has_one :order
@@ -41,8 +41,8 @@
 
 | Column         | Type       | Options                        |
 | ------         | ---------- | ------------------------------ |
-| user           | reference  | null:false, foreign_key: true  |
-| item           | reference  | null:false, foreign_key: true  |
+| user           | references  | null:false, foreign_key: true  |
+| item           | references  | null:false, foreign_key: true  |
 
 ### Association
 -belongs_to :user
@@ -60,7 +60,7 @@
 | street_number      | string     | null: false |
 | building_name      | string     |             |
 | phone_number       | stirng     | null:false  |
-| order              | reference  | null:false, foreign_key: true |
+| order              | references  | null:false, foreign_key: true |
 
 ### Association
 -belongs_to :order
