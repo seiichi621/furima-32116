@@ -36,11 +36,24 @@ describe Item do
       expect(@item.errors.full_messages).to include("Category can't be blank")
     end
 
+
+    it " category_idが1の場合は登録できないこと " do
+      @item.category_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Category must be other than 1")
+    end
+
     
     it "condition_idがない場合は登録できないこと" do
       @item.condition_id = ""
       @item.valid?
       expect(@item.errors.full_messages).to include("Condition can't be blank")
+    end
+
+    it "condition_idが1の場合は登録できないこと" do
+      @item.condition_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Condition must be other than 1")
     end
  
     
@@ -49,6 +62,14 @@ describe Item do
       @item.valid?
       expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
     end
+
+
+    it "delivery_fee_idが1の場合は登録できないこと" do
+      @item.delivery_fee_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Delivery fee must be other than 1")
+    end
+ 
  
     
     it "prefecture_idがない場合は登録できないこと" do
@@ -56,12 +77,26 @@ describe Item do
       @item.valid?
       expect(@item.errors.full_messages).to include("Prefecture can't be blank")
     end
+
+
+    it "prefecture_idが1の場合は登録できないこと" do
+      @item.prefecture_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
+    end
  
     
     it "datetime_id がない場合は登録できないこと" do
       @item.datetime_id  = ""
       @item.valid?
       expect(@item.errors.full_messages).to include("Datetime can't be blank")
+    end
+
+
+    it "datetime_id が1の場合は登録できないこと" do
+      @item.datetime_id  = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Datetime must be other than 1")
     end
 
     it 'priceがない場合登録できないこと' do
@@ -72,19 +107,19 @@ describe Item do
 
 
     it 'priceが300以下の場合だと登録できないこと' do
-      @item.price = "299"
+      @item.price = 299
       @item.valid?
       expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
     end
 
     it 'priceが10000000以上の場合だと登録できないこと' do
-      @item.price = "9999999"
+      @item.price = 9999999
       @item.valid?
       expect(@item).to be_valid
     end
 
     it " priceが半角数字のみ登録できること " do
-      @item.price = "500"
+      @item.price = 500
       @item.valid?
       expect(@item).to be_valid
     end
