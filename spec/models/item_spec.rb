@@ -82,6 +82,12 @@ describe Item do
       @item.valid?
       expect(@item).to be_valid
     end
+
+    it " priceが半角数字のみ登録できること " do
+      @item.price = "500"
+      @item.valid?
+      expect(@item).to be_valid
+    end
     
 
     it 'user_idがない場合登録できないこと' do
