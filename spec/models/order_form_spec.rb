@@ -60,6 +60,13 @@ RSpec.describe OrderForm, type: :model do
     end
 
 
+    it 'phone_numberがハイフンは不要で11桁以内だと保存できること' do
+      @order_form.phone_number = "09012345678"
+      @order_form.valid?
+      expect(@order_form).to be_valid
+    end
+
+
     it 'user_idが空だと保存できないこと' do
       @order_form.user_id = nil
       @order_form.valid?
@@ -73,6 +80,11 @@ RSpec.describe OrderForm, type: :model do
       expect(@order_form.errors.full_messages).to include("Item can't be blank")
     end
   
+    it "tokenが空では登録できないこと" do
+      @order_form.token = nil
+      @order_form.valid?
+      expect(@order_form.errors.full_messages).to include("Token can't be blank")
+    end
   end
 end
 

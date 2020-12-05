@@ -55,3 +55,7 @@ class ItemsController < ApplicationController
 
 
 end
+
+# params {A: aa, item:{name: jj} ,B:b}
+# param.require(:item).permit(:name)
+

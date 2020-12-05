@@ -12,12 +12,13 @@ class OrderForm
     validates :phone_number,  format: { with: /\A(0{1}\d{9,10})\z/,  phone_number: "is invalid"}  
     validates :user_id
     validates :item_id
+    validates :token
     end
 
     
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
-    Address.create(postcode: postcode, prefecture_id: prefecture_id, state: state, street_number: street_number, building_name: building_name, phone_number: phone_number, order_id: order.id)
+    Address.create(postcode: postcode, prefecture_id: prefecture_id, state: state, street_number: street_number, building_name: building_name, phone_number: phone_number,token: token, order_id: order.id)
   end
 end
