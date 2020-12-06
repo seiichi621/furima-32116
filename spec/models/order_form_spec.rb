@@ -19,7 +19,7 @@ RSpec.describe OrderForm, type: :model do
 
 
     it 'postcodeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
-      @order_form.postcode = '/\A[0-9]{3}-[0-9]{4}\z/'
+      @order_form.postcode = '1234567'
       @order_form.valid?
       expect(@order_form.errors.full_messages).to include("Postcode is invalid")
     end
@@ -65,8 +65,14 @@ RSpec.describe OrderForm, type: :model do
     end
 
 
-    it 'phone_numberがハイフンは不要で11桁以内でないと保存できないこと' do
-      @order_form.phone_number = "090-1234-5678"
+    it 'phone_numberが数値以外の文字列を含むと保存できないこと' do
+      @order_form.phone_number = "090-1234-abcd"
+      @order_form.valid?
+      expect(@order_form.errors.full_messages).to include("Phone number is invalid")
+    end
+
+    it 'phone_numberは12桁以上では保存できないこと' do
+      @order_form.phone_number = "090123456789"
       @order_form.valid?
       expect(@order_form.errors.full_messages).to include("Phone number is invalid")
     end
