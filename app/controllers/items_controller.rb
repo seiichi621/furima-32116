@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.all.order("created_at DESC")
+    
   end
 
   def new
@@ -55,3 +56,7 @@ class ItemsController < ApplicationController
 
 
 end
+
+# params {A: aa, item:{name: jj} ,B:b}
+# param.require(:item).permit(:name)
+

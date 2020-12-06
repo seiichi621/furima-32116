@@ -99,6 +99,7 @@ describe Item do
       expect(@item.errors.full_messages).to include("Datetime must be other than 1")
     end
 
+
     it 'priceがない場合登録できないこと' do
       @item.price = ""
       @item.valid?
