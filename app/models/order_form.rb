@@ -14,7 +14,8 @@ class OrderForm
     validates :item_id
     validates :token
     end
-
+    
+    validates :prefecture_id, numericality: { other_than: 1 } 
     
 
   def save

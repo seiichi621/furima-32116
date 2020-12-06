@@ -32,6 +32,12 @@ RSpec.describe OrderForm, type: :model do
     end
 
 
+    it 'prefecture_idが1だと保存できないこと' do
+      @order_form.prefecture_id = 1
+      @order_form.valid?
+      expect(@order_form.errors.full_messages).to include("Prefecture must be other than 1")
+    end
+
     it 'stateが空だと保存できないこと' do
       @order_form.state = nil
       @order_form.valid?
@@ -59,12 +65,6 @@ RSpec.describe OrderForm, type: :model do
       expect(@order_form.errors.full_messages).to include("Phone number is invalid")
     end
 
-
-    it 'phone_numberがハイフンは不要で11桁以内だと保存できること' do
-      @order_form.phone_number = "09012345678"
-      @order_form.valid?
-      expect(@order_form).to be_valid
-    end
 
 
     it 'user_idが空だと保存できないこと' do
