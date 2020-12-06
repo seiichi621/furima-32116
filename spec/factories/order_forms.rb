@@ -4,7 +4,7 @@ FactoryBot.define do
     prefecture_id { 2 }
     state { '世田谷区' }
     street_number { '桜町1-1-1' }
-    building_name { 'ハイツ' }
+    building_name { '' }
     phone_number { "09012345678" }
     user_id    {1}
     item_id    {1}

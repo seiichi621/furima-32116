@@ -44,6 +44,12 @@ RSpec.describe OrderForm, type: :model do
       expect(@order_form.errors.full_messages).to include("State can't be blank")
     end
 
+    it " building_nameが抜けていても登録できること " do
+      @order_form.building_name = ''
+      @order_form.valid?
+      expect(@order_form).to be_valid
+    end
+
 
     it 'street_numberが空だと保存できないこと' do
       @order_form.street_number = nil
