@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!,  except: [:index]
+  before_action :authenticate_user!,  except: [:index,:show]
   before_action :set_item, only: [:edit, :update, :show, :destroy]
 
   
@@ -23,10 +23,13 @@ class ItemsController < ApplicationController
 
   
   def edit
+     if user_signed_in? && current_user.id != @item.user_id 
+        redirect_to root_path
+     end
   end
 
   def update
-    if @item.save
+    if @item.update(item_params)
       redirect_to item_path
     else
       render :edit
@@ -53,10 +56,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-
-
 end
 
-# params {A: aa, item:{name: jj} ,B:b}
-# param.require(:item).permit(:name)
+
 
