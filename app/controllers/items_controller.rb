@@ -23,8 +23,10 @@ class ItemsController < ApplicationController
 
   
   def edit
-     if user_signed_in? && current_user.id != @item.user_id 
-        redirect_to root_path
+     if @item.order.present? || current_user.id != @item.user_id #current_user.id(7) == @item.user_id 7
+#@item.order.present?しょうひんが売れているか確認
+#current_user.id != @item.user_id今のユーザーが出品者かどうか確認
+      redirect_to root_path
      end
   end
 
